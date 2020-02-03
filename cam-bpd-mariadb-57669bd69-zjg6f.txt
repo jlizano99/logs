@@ -1,0 +1,90 @@
+Name:               cam-bpd-mariadb-57669bd69-zjg6f
+Namespace:          services
+Priority:           0
+PriorityClassName:  <none>
+Node:               208.43.36.189/208.43.36.189
+Start Time:         Mon, 03 Feb 2020 10:46:11 -0600
+Labels:             app.kubernetes.io/instance=cam
+                    app.kubernetes.io/managed-by=Tiller
+                    app.kubernetes.io/name=cam-ibm-cam
+                    helm.sh/chart=ibm-cam-4.1.0
+                    name=cam-bpd-mariadb
+                    pod-template-hash=57669bd69
+                    release=cam
+Annotations:        kubernetes.io/psp: cam-services-psp-services
+                    productID: IBMCloudAutomationManager_5737E67_4100_EE_000
+                    productName: Cloud Automation Manager
+                    productVersion: 4.1.0.0
+Status:             Running
+IP:                 10.1.226.183
+Controlled By:      ReplicaSet/cam-bpd-mariadb-57669bd69
+Containers:
+  cam-bpd-mariadb:
+    Container ID:   docker://57ef71e72ecca86adbeb712f50591b09efc5c8271e3d16c53bd7ed768b1d1feb
+    Image:          mycluster.icp:8500/services/icam-bpd-mariadb:4.1.0.0-x86_64
+    Image ID:       docker-pullable://mycluster.icp:8500/services/icam-bpd-mariadb@sha256:bfc3e36f4064c2f8727d7d0cde86878d349653fd4b4f26d799ce6edc4f60caa9
+    Port:           3306/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Mon, 03 Feb 2020 10:52:58 -0600
+      Finished:     Mon, 03 Feb 2020 10:53:01 -0600
+    Ready:          False
+    Restart Count:  6
+    Limits:
+      cpu:     200m
+      memory:  512Mi
+    Requests:
+      cpu:      100m
+      memory:   256Mi
+    Liveness:   exec [sh -c mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}] delay=75s timeout=20s period=10s #success=1 #failure=3
+    Readiness:  exec [sh -c mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}] delay=75s timeout=20s period=10s #success=1 #failure=3
+    Environment:
+      MYSQL_ROOT_PASSWORD:  <set to the key 'mariaDbPassword' in secret 'cam-secure-values-secret'>  Optional: false
+      MYSQL_PASSWORD:       <set to the key 'mariaDbPassword' in secret 'cam-secure-values-secret'>  Optional: false
+      MYSQL_USER:           <set to the key 'mariaDbUsername' in secret 'cam-secure-values-secret'>  Optional: false
+      MYSQL_DATABASE:       ibm_ucdp
+    Mounts:
+      /usr/src/app/certs from cam-cert (ro)
+      /var/camlog from cam-logs-pv (rw)
+      /var/lib/mysql from cam-bpd-appdata-pv (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gbft9 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  cam-cert:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cert
+    Optional:    false
+  cam-bpd-appdata-pv:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cam-bpd-appdata-pv
+    ReadOnly:   false
+  cam-logs-pv:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cam-logs-pv
+    ReadOnly:   false
+  default-token-gbft9:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-gbft9
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/memory-pressure:NoSchedule
+                 node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                     From                    Message
+  ----     ------     ----                    ----                    -------
+  Normal   Scheduled  7m49s                   default-scheduler       Successfully assigned services/cam-bpd-mariadb-57669bd69-zjg6f to 208.43.36.189
+  Normal   Pulled     5m36s (x5 over 7m30s)   kubelet, 208.43.36.189  Container image "mycluster.icp:8500/services/icam-bpd-mariadb:4.1.0.0-x86_64" already present on machine
+  Normal   Created    5m34s (x5 over 7m28s)   kubelet, 208.43.36.189  Created container
+  Normal   Started    5m34s (x5 over 7m27s)   kubelet, 208.43.36.189  Started container
+  Warning  BackOff    2m25s (x20 over 7m10s)  kubelet, 208.43.36.189  Back-off restarting failed container
