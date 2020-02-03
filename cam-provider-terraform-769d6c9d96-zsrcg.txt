@@ -1,0 +1,148 @@
+Name:               cam-provider-terraform-769d6c9d96-zsrcg
+Namespace:          services
+Priority:           0
+PriorityClassName:  <none>
+Node:               208.43.36.189/208.43.36.189
+Start Time:         Mon, 03 Feb 2020 08:21:05 -0600
+Labels:             app.kubernetes.io/instance=cam
+                    app.kubernetes.io/managed-by=Tiller
+                    app.kubernetes.io/name=cam-ibm-cam
+                    helm.sh/chart=ibm-cam-4.1.0
+                    name=cam-provider-terraform
+                    pod-template-hash=769d6c9d96
+                    release=cam
+Annotations:        kubernetes.io/psp: cam-services-psp-services
+                    productID: IBMCloudAutomationManager_5737E67_4100_EE_000
+                    productName: Cloud Automation Manager
+                    productVersion: 4.1.0.0
+Status:             Pending
+IP:                 
+Controlled By:      ReplicaSet/cam-provider-terraform-769d6c9d96
+Containers:
+  cam-provider-terraform:
+    Container ID:   
+    Image:          mycluster.icp:8500/services/icam-provider-terraform:4.1.0.0-x86_64
+    Image ID:       
+    Port:           7000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  1500Mi
+    Requests:
+      cpu:      100m
+      memory:   256Mi
+    Liveness:   http-get https://:liveness-port/api/health delay=300s timeout=1s period=20s #success=1 #failure=3
+    Readiness:  http-get https://:liveness-port/api/health delay=5s timeout=1s period=20s #success=1 #failure=3
+    Environment Variables from:
+      common-config  ConfigMap  Optional: false
+    Environment:
+      MONGODB_PASSWORD:                 <set to the key 'mongoDbPassword' in secret 'cam-secure-values-secret'>     Optional: false
+      DB_URL:                           <set to the key 'mongoDbUrl' in secret 'cam-secure-values-secret'>          Optional: false
+      CIPHER_PWD:                       <set to the key 'encryptionPassword' in secret 'cam-secure-values-secret'>  Optional: false
+      CIPHER_PWD_NEW:                   <set to the key 'newpassword' in secret 'cam-cipher-migration-secret'>      Optional: false
+      CIPHER_MIGRATION_TIMESTAMP_FILE:  <set to the key 'timestampfile' in secret 'cam-cipher-migration-secret'>    Optional: false
+      IAM_CLIENT_ID:                    
+      IAM_CLIENT_ID_STAGE1:             
+      IAM_SECRET:                       
+      IAM_SECRET_STAGE1:                
+      TENANT_MGMT_SERVICE_TOKEN:        <set to the key 'token' in secret 'cam-api-secret'>            Optional: false
+      CAM_TOKEN:                        <set to the key 'token' in secret 'cam-api-secret'>            Optional: false
+      ICP_MASTER_IP:                    <set to the key 'MASTER_IP' of config map 'oauth-client-map'>  Optional: false
+      ICP_PORT:                         <set to the key 'ICP_PORT' of config map 'common-config'>      Optional: false
+      ICP_ENDPOINT:                     https://$(ICP_MASTER_IP):$(ICP_PORT)
+      ORPHEUS_IDENTITY_ENDPOINT:        <set to the key 'ORPHEUS_TENANT_URL' of config map 'common-config'>  Optional: false
+      ORPHEUS_IDENTITY_URL:             $(ICP_ENDPOINT)/idprovider
+      ORPHEUS_IDENTITY_API_URL:         $(ORPHEUS_IDENTITY_URL)
+      TERRAFORM_HOME:                   /home/terraform
+      TERRAFORM_UID:                    1111
+      TERRAFORM_GID:                    1111
+      POD_NAME:                         cam-provider-terraform-769d6c9d96-zsrcg (v1:metadata.name)
+      LOG_LEVEL:                        info
+      MAX_LOCAL_TERRAFORM_JOBS:         100
+    Mounts:
+      /home/terraform from cam-terraform-pv (rw)
+      /usr/src/app/certs from cam-cert (ro)
+      /var/camlog from cam-logs-pv (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gbft9 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  cam-cert:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cert
+    Optional:    false
+  cam-logs-pv:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cam-logs-pv
+    ReadOnly:   false
+  cam-terraform-pv:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cam-terraform-pv
+    ReadOnly:   false
+  default-token-gbft9:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-gbft9
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/memory-pressure:NoSchedule
+                 node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason       Age   From                    Message
+  ----     ------       ----  ----                    -------
+  Normal   Scheduled    13m   default-scheduler       Successfully assigned services/cam-provider-terraform-769d6c9d96-zsrcg to 208.43.36.189
+  Warning  FailedMount  13m   kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-123303.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  13m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-123464.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  13m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-123799.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  13m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-124570.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  13m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-125895.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  13m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-128592.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  12m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-2731.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  12m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-12494.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  67s (x6 over 11m)  kubelet, 208.43.36.189  (combined from similar events): MountVolume.SetUp failed for volume "cam-terraform-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_terraform /var/lib/kubelet/pods/6a01f891-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-terraform-pv
+Output: Running scope as unit run-92202.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_terraform
+  Warning  FailedMount  13s (x6 over 11m)  kubelet, 208.43.36.189  Unable to mount volumes for pod "cam-provider-terraform-769d6c9d96-zsrcg_services(6a01f891-4690-11ea-ae40-066507a34e46)": timeout expired waiting for volumes to attach or mount for pod "services"/"cam-provider-terraform-769d6c9d96-zsrcg". list of unmounted volumes=[cam-terraform-pv]. list of unattached volumes=[cam-cert cam-logs-pv cam-terraform-pv default-token-gbft9]
