@@ -1,0 +1,19 @@
+Name:            cam-logs-pv
+Labels:          type=cam-logs
+Annotations:     pv.kubernetes.io/bound-by-controller: yes
+Finalizers:      [kubernetes.io/pv-protection]
+StorageClass:    
+Status:          Terminating (lasts <invalid>)
+Claim:           services/cam-logs-pv
+Reclaim Policy:  Retain
+Access Modes:    RWX
+VolumeMode:      Filesystem
+Capacity:        10Gi
+Node Affinity:   <none>
+Message:         
+Source:
+    Type:      NFS (an NFS mount that lasts the lifetime of a pod)
+    Server:    208.43.36.189
+    Path:      /rook/storage-dir/CAM_logs
+    ReadOnly:  false
+Events:        <none>
