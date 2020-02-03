@@ -1,0 +1,33 @@
+Name:          cam-logs-pv
+Namespace:     services
+StorageClass:  
+Status:        Bound
+Volume:        cam-logs-pv
+Labels:        app.kubernetes.io/instance=cam
+               app.kubernetes.io/managed-by=Tiller
+               app.kubernetes.io/name=cam-ibm-cam
+               helm.sh/chart=ibm-cam-4.1.0
+               release=cam
+Annotations:   helm.sh/resource-policy: keep
+               pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      10Gi
+Access Modes:  RWX
+VolumeMode:    Filesystem
+Events:        <none>
+Mounted By:    cam-bpd-cds-5bd47d8f98-hrzgk
+               cam-bpd-mariadb-57669bd69-cnb67
+               cam-bpd-mds-568f85f649-4ctkz
+               cam-bpd-ui-5ffb4fd7bf-hhz5h
+               cam-broker-76b594bfd9-j7jzt
+               cam-iaas-86b9c579d5-fwslf
+               cam-orchestration-76995b59f-lrz8v
+               cam-portal-ui-769f44f64-dkl2j
+               cam-provider-helm-ff4545689-gw5w6
+               cam-provider-terraform-769d6c9d96-zsrcg
+               cam-proxy-79854bb8c6-hkx7m
+               cam-service-composer-api-85f667bcc7-wwkvl
+               cam-service-composer-ui-67897d8764-lz6qg
+               cam-tenant-api-66857ccb86-ccgvh
+               cam-ui-basic-5d9c5f749d-zwl7k
