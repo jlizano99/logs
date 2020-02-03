@@ -1,0 +1,127 @@
+Name:               cam-bpd-mariadb-57669bd69-cnb67
+Namespace:          services
+Priority:           0
+PriorityClassName:  <none>
+Node:               208.43.36.189/208.43.36.189
+Start Time:         Mon, 03 Feb 2020 08:21:05 -0600
+Labels:             app.kubernetes.io/instance=cam
+                    app.kubernetes.io/managed-by=Tiller
+                    app.kubernetes.io/name=cam-ibm-cam
+                    helm.sh/chart=ibm-cam-4.1.0
+                    name=cam-bpd-mariadb
+                    pod-template-hash=57669bd69
+                    release=cam
+Annotations:        kubernetes.io/psp: cam-services-psp-services
+                    productID: IBMCloudAutomationManager_5737E67_4100_EE_000
+                    productName: Cloud Automation Manager
+                    productVersion: 4.1.0.0
+Status:             Pending
+IP:                 
+Controlled By:      ReplicaSet/cam-bpd-mariadb-57669bd69
+Containers:
+  cam-bpd-mariadb:
+    Container ID:   
+    Image:          mycluster.icp:8500/services/icam-bpd-mariadb:4.1.0.0-x86_64
+    Image ID:       
+    Port:           3306/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  512Mi
+    Requests:
+      cpu:      100m
+      memory:   256Mi
+    Liveness:   exec [sh -c mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}] delay=75s timeout=20s period=10s #success=1 #failure=3
+    Readiness:  exec [sh -c mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}] delay=75s timeout=20s period=10s #success=1 #failure=3
+    Environment:
+      MYSQL_ROOT_PASSWORD:  <set to the key 'mariaDbPassword' in secret 'cam-secure-values-secret'>  Optional: false
+      MYSQL_PASSWORD:       <set to the key 'mariaDbPassword' in secret 'cam-secure-values-secret'>  Optional: false
+      MYSQL_USER:           <set to the key 'mariaDbUsername' in secret 'cam-secure-values-secret'>  Optional: false
+      MYSQL_DATABASE:       ibm_ucdp
+    Mounts:
+      /usr/src/app/certs from cam-cert (ro)
+      /var/camlog from cam-logs-pv (rw)
+      /var/lib/mysql from cam-bpd-appdata-pv (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gbft9 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  cam-cert:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cert
+    Optional:    false
+  cam-bpd-appdata-pv:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cam-bpd-appdata-pv
+    ReadOnly:   false
+  cam-logs-pv:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cam-logs-pv
+    ReadOnly:   false
+  default-token-gbft9:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-gbft9
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/memory-pressure:NoSchedule
+                 node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason       Age   From                    Message
+  ----     ------       ----  ----                    -------
+  Normal   Scheduled    26m   default-scheduler       Successfully assigned services/cam-bpd-mariadb-57669bd69-cnb67 to 208.43.36.189
+  Warning  FailedMount  26m   kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-120683.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  26m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-120856.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  26m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-121145.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  26m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-121854.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  26m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-123258.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  26m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-125684.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  26m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-130752.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  25m  kubelet, 208.43.36.189  MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-9942.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
+  Warning  FailedMount  4m18s (x10 over 24m)  kubelet, 208.43.36.189  Unable to mount volumes for pod "cam-bpd-mariadb-57669bd69-cnb67_services(69ffcc3a-4690-11ea-ae40-066507a34e46)": timeout expired waiting for volumes to attach or mount for pod "services"/"cam-bpd-mariadb-57669bd69-cnb67". list of unmounted volumes=[cam-bpd-appdata-pv]. list of unattached volumes=[cam-cert cam-bpd-appdata-pv cam-logs-pv default-token-gbft9]
+  Warning  FailedMount  7s (x13 over 24m)     kubelet, 208.43.36.189  (combined from similar events): MountVolume.SetUp failed for volume "cam-bpd-appdata-pv" : mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv --scope -- mount -t nfs 208.43.36.189:/mnt/data/CAM_BPD_appdata /var/lib/kubelet/pods/69ffcc3a-4690-11ea-ae40-066507a34e46/volumes/kubernetes.io~nfs/cam-bpd-appdata-pv
+Output: Running scope as unit run-92131.scope.
+mount.nfs: access denied by server while mounting 208.43.36.189:/mnt/data/CAM_BPD_appdata
