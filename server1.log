@@ -1,0 +1,306 @@
+Got 'casServerHost' from consul
+Got 'consul' from consul
+Got 'httpproxy.proto' from consul
+Got 'resources' from consul
+Got 'restrictedAreas' from consul
+Got 'apigateway.port' from consul
+Got 'picksUrl' from consul
+Got 'casServerHost' from consul
+Got 'toggles' from consul
+Got 'maxTimeForExecuteReconnect' from consul
+Got 'liveOdds.domain' from consul
+Got 'apigateway.domain' from consul
+Got 'geo' from consul
+Got 'security.authToken' from consul
+Got 'sbrUrl' from consul
+Got 'apigateway.port' from consul
+Got 'httpproxy.domain' from consul
+Got 'dataLayerMaxLength' from consul
+Got 'apigateway.proto' from consul
+Got 'sbrUrl' from consul
+Got 'httpproxy.port' from consul
+Got 'security.accessToken' from consul
+Got 'ssrapigateway.domain' from consul
+================================ CONFIG LOADED =================================
+{"app":{"name":"sbrodds"},"styleCode":"n7pea2","apigateway":{"domain":"qa.ms.us-east-1.sbrfeeds.com","port":443,"proto":"https"},"ssrapigateway":{"domain":"qa.ms.us-east-1.sbrfeeds.com","port":80,"proto":"http"},"httpproxy":{"domain":"qa.http.us-east-1.sbrfeeds.com","port":80,"proto":"http"},"liveOdds":{"domain":"live-odds.qa.ws.us-east-1.sbrfeeds.com","port":443,"proto":"wss"},"local":{"domain":"localhost","port":3000,"proto":"http"},"cdn":{"url":"/"},"cors":{"origin":"*"},"geo":{"site":"sbrodds","domain":"com","cookieMaxAge":86400000},"consul":{"url":"qa.consul.us-east-1.sbrfeeds.com"},"casServerHost":"http://qa.sbrcas.us-east-1.sbrfeeds.com","publicPath":"/","affiliateHost":"http://qa.affiliate.sportsbookreview.sbrfeeds.com","googleTagManagerKey":"GTM-TJLFVD","siteId":4,"familyId":3,"services":{"metricsService":{"name":"metrics","type":"apigateway"},"sbrOddsService":{"name":"sbrodds","type":"apigateway"},"oddsv2Service":{"name":"odds-v2","type":"apigateway"},"picksAdmin":{"name":"picks-admin","type":"apigateway"},"liveOddsService":{"name":"live-odds","type":"ws"},"renderService":{"name":"render","type":"httpproxy"}},"resources":{"menu":{"url":"https://menu-service-qa-753931602578.s3.amazonaws.com"},"pages":{"url":"https://menu-service-qa-753931602578.s3.amazonaws.com/pages","pageName":"pageContent_{siteId}_{domainId}.json"},"sitemap":{"url":"https://s3.amazonaws.com/sitemap-xmls-753931602578/sbrodds"}},"fluentd":{"host":"localhost","port":24224,"timeout":3,"reconnectInterval":600000,"use-local-ipv4":true},"meta-data":{"local-ipv4":"172.22.18.229"},"sendAccessLogs":true,"appDefaultDid":2,"defaultDomainId":0,"defaultSportId":0,"statisticGroupId":3,"playsGroupId":2,"picksUrl":"https://qa.picks-redesign.sbrfeeds.com","sbrUrl":"http://qa.sbrodds.us-east-1.sbrfeeds.com","defaultPaid":3,"restrictedAreas":["NJ"],"security":{"authToken":{"validations":{"expirationDate":true}},"accessToken":{"validations":{"minCreationDate":1542990608,"creationDate":true,"expirationDate":true}}},"maxTimeForExecuteReconnect":90000,"sgidWhenFinished":4,"pgidWhenFinished":-1,"toggles":{"useHardRedirectToEventPage":false,"useWordpress":true,"showHelloBar":false,"disclaimerBanner":true,"showBreakButton":false},"dataLayerMaxLength":100}
+================================================================================
+==> ✅  Open http://localhost:8080 in a browser to view the app.
+==> ❌ SSR 404 triggered undefined on url /betting-odds/apple-touch-icon.png/
+{ Error: Request failed with status code 401
+    at createError (/usr/src/app/node_modules/axios/lib/core/createError.js:16:15)
+    at settle (/usr/src/app/node_modules/axios/lib/core/settle.js:18:12)
+    at IncomingMessage.handleStreamEnd (/usr/src/app/node_modules/axios/lib/adapters/http.js:201:11)
+    at IncomingMessage.emit (events.js:203:15)
+    at IncomingMessage.EventEmitter.emit (domain.js:448:20)
+    at endReadableNT (_stream_readable.js:1143:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        ssrUniqueId: '28e4641c-08f7-4b29-b87b-03d0115a3b5a',
+        'Site-Domain': 'sbrodds-com',
+        Authorization: '',
+        'User-Agent': 'axios/0.18.0' },
+     method: 'get',
+     baseURL: 'http://qa.ms.us-east-1.sbrfeeds.com:80/sbrodds',
+     params:
+      { query:
+         '{  leagues  { lid url title nam alias shortName matchupline marketGroups{ ord url spid nam alias mtgid marketTypes { ord url mtid spid nam alias format layout } } sport { spid nam } } }' },
+     url:
+      'http://qa.ms.us-east-1.sbrfeeds.com:80/sbrodds/sbrodds-service',
+     data: undefined },
+  request:
+   ClientRequest {
+     domain: null,
+     _events:
+      [Object: null prototype] {
+        socket: [Function],
+        abort: [Function],
+        aborted: [Function],
+        error: [Function],
+        timeout: [Function],
+        prefinish: [Function: requestOnPrefinish] },
+     _eventsCount: 6,
+     _maxListeners: undefined,
+     output: [],
+     outputEncodings: [],
+     outputCallbacks: [],
+     outputSize: 0,
+     writable: true,
+     _last: true,
+     chunkedEncoding: false,
+     shouldKeepAlive: false,
+     useChunkedEncodingByDefault: false,
+     sendDate: false,
+     _removedConnection: false,
+     _removedContLen: false,
+     _removedTE: false,
+     _contentLength: 0,
+     _hasBody: true,
+     _trailer: '',
+     finished: true,
+     _headerSent: true,
+     socket:
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [TCP],
+        _parent: null,
+        _host: 'qa.ms.us-east-1.sbrfeeds.com',
+        _readableState: [ReadableState],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 7,
+        _maxListeners: undefined,
+        _writableState: [WritableState],
+        writable: false,
+        allowHalfOpen: false,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        parser: null,
+        _httpMessage: [Circular],
+        [Symbol(asyncId)]: 4770,
+        [Symbol(lastWriteQueueSize)]: 0,
+        [Symbol(timeout)]: null,
+        [Symbol(kBytesRead)]: 0,
+        [Symbol(kBytesWritten)]: 0 },
+     connection:
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [TCP],
+        _parent: null,
+        _host: 'qa.ms.us-east-1.sbrfeeds.com',
+        _readableState: [ReadableState],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 7,
+        _maxListeners: undefined,
+        _writableState: [WritableState],
+        writable: false,
+        allowHalfOpen: false,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        parser: null,
+        _httpMessage: [Circular],
+        [Symbol(asyncId)]: 4770,
+        [Symbol(lastWriteQueueSize)]: 0,
+        [Symbol(timeout)]: null,
+        [Symbol(kBytesRead)]: 0,
+        [Symbol(kBytesWritten)]: 0 },
+     _header:
+      'GET /sbrodds/sbrodds-service?query=%7B++leagues++%7B+lid+url+title+nam+alias+shortName+matchupline+marketGroups%7B+ord+url+spid+nam+alias+mtgid+marketTypes+%7B+ord+url+mtid+spid+nam+alias+format+layout+%7D+%7D+sport+%7B+spid+nam+%7D+%7D+%7D HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nContent-Type: application/json\r\nssrUniqueId: 28e4641c-08f7-4b29-b87b-03d0115a3b5a\r\nSite-Domain: sbrodds-com\r\nAuthorization: \r\nUser-Agent: axios/0.18.0\r\nHost: qa.ms.us-east-1.sbrfeeds.com\r\nConnection: close\r\n\r\n',
+     _onPendingData: [Function: noopPendingOutput],
+     agent:
+      Agent {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        defaultPort: 80,
+        protocol: 'http:',
+        options: [Object],
+        requests: {},
+        sockets: [Object],
+        freeSockets: {},
+        keepAliveMsecs: 1000,
+        keepAlive: false,
+        maxSockets: Infinity,
+        maxFreeSockets: 256 },
+     socketPath: undefined,
+     timeout: undefined,
+     method: 'GET',
+     path:
+      '/sbrodds/sbrodds-service?query=%7B++leagues++%7B+lid+url+title+nam+alias+shortName+matchupline+marketGroups%7B+ord+url+spid+nam+alias+mtgid+marketTypes+%7B+ord+url+mtid+spid+nam+alias+format+layout+%7D+%7D+sport+%7B+spid+nam+%7D+%7D+%7D',
+     _ended: true,
+     res:
+      IncomingMessage {
+        _readableState: [ReadableState],
+        readable: false,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 3,
+        _maxListeners: undefined,
+        socket: [Socket],
+        connection: [Socket],
+        httpVersionMajor: 1,
+        httpVersionMinor: 1,
+        httpVersion: '1.1',
+        complete: true,
+        headers: [Object],
+        rawHeaders: [Array],
+        trailers: {},
+        rawTrailers: [],
+        aborted: false,
+        upgrade: false,
+        url: '',
+        method: null,
+        statusCode: 401,
+        statusMessage: 'Unauthorized',
+        client: [Socket],
+        _consuming: false,
+        _dumped: false,
+        req: [Circular],
+        responseUrl:
+         'http://qa.ms.us-east-1.sbrfeeds.com:80/sbrodds/sbrodds-service?query=%7B++leagues++%7B+lid+url+title+nam+alias+shortName+matchupline+marketGroups%7B+ord+url+spid+nam+alias+mtgid+marketTypes+%7B+ord+url+mtid+spid+nam+alias+format+layout+%7D+%7D+sport+%7B+spid+nam+%7D+%7D+%7D',
+        redirects: [] },
+     aborted: undefined,
+     timeoutCb: null,
+     upgradeOrConnect: false,
+     parser: null,
+     maxHeadersCount: null,
+     _redirectable:
+      Writable {
+        _writableState: [WritableState],
+        writable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 2,
+        _maxListeners: undefined,
+        _options: [Object],
+        _redirectCount: 0,
+        _redirects: [],
+        _requestBodyLength: 0,
+        _requestBodyBuffers: [],
+        _onNativeResponse: [Function],
+        _currentRequest: [Circular],
+        _currentUrl:
+         'http://qa.ms.us-east-1.sbrfeeds.com:80/sbrodds/sbrodds-service?query=%7B++leagues++%7B+lid+url+title+nam+alias+shortName+matchupline+marketGroups%7B+ord+url+spid+nam+alias+mtgid+marketTypes+%7B+ord+url+mtid+spid+nam+alias+format+layout+%7D+%7D+sport+%7B+spid+nam+%7D+%7D+%7D' },
+     [Symbol(isCorked)]: false,
+     [Symbol(outHeadersKey)]:
+      [Object: null prototype] {
+        accept: [Array],
+        'content-type': [Array],
+        ssruniqueid: [Array],
+        'site-domain': [Array],
+        authorization: [Array],
+        'user-agent': [Array],
+        host: [Array] } },
+  response:
+   { status: 401,
+     statusText: 'Unauthorized',
+     headers:
+      { 'content-type': 'text/plain; charset=utf-8',
+        date: 'Mon, 13 Apr 2020 20:51:25 GMT',
+        'www-authenticate': 'JWT',
+        'content-length': '12',
+        connection: 'Close' },
+     config:
+      { adapter: [Function: httpAdapter],
+        transformRequest: [Object],
+        transformResponse: [Object],
+        timeout: 0,
+        xsrfCookieName: 'XSRF-TOKEN',
+        xsrfHeaderName: 'X-XSRF-TOKEN',
+        maxContentLength: -1,
+        validateStatus: [Function: validateStatus],
+        headers: [Object],
+        method: 'get',
+        baseURL: 'http://qa.ms.us-east-1.sbrfeeds.com:80/sbrodds',
+        params: [Object],
+        url:
+         'http://qa.ms.us-east-1.sbrfeeds.com:80/sbrodds/sbrodds-service',
+        data: undefined },
+     request:
+      ClientRequest {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /sbrodds/sbrodds-service?query=%7B++leagues++%7B+lid+url+title+nam+alias+shortName+matchupline+marketGroups%7B+ord+url+spid+nam+alias+mtgid+marketTypes+%7B+ord+url+mtid+spid+nam+alias+format+layout+%7D+%7D+sport+%7B+spid+nam+%7D+%7D+%7D HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nContent-Type: application/json\r\nssrUniqueId: 28e4641c-08f7-4b29-b87b-03d0115a3b5a\r\nSite-Domain: sbrodds-com\r\nAuthorization: \r\nUser-Agent: axios/0.18.0\r\nHost: qa.ms.us-east-1.sbrfeeds.com\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path:
+         '/sbrodds/sbrodds-service?query=%7B++leagues++%7B+lid+url+title+nam+alias+shortName+matchupline+marketGroups%7B+ord+url+spid+nam+alias+mtgid+marketTypes+%7B+ord+url+mtid+spid+nam+alias+format+layout+%7D+%7D+sport+%7B+spid+nam+%7D+%7D+%7D',
+        _ended: true,
+        res: [IncomingMessage],
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Writable],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     data: 'Unauthorized' } }
