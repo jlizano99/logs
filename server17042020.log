@@ -1,0 +1,27 @@
+Got 'consul' from consul
+Got 'restrictedAreas' from consul
+Got 'casServerHost' from consul
+Got 'httpproxy.domain' from consul
+Got 'sbrUrl' from consul
+Got 'apigateway.domain' from consul
+Got 'dataLayerMaxLength' from consul
+Got 'apigateway.proto' from consul
+Got 'apigateway.port' from consul
+Got 'liveOdds.domain' from consul
+Got 'casServerHost' from consul
+Got 'geo' from consul
+Got 'picksUrl' from consul
+Got 'toggles' from consul
+Got 'resources' from consul
+Got 'httpproxy.proto' from consul
+Got 'maxTimeForExecuteReconnect' from consul
+Got 'sbrUrl' from consul
+Got 'security.accessToken' from consul
+Got 'httpproxy.port' from consul
+Got 'apigateway.port' from consul
+Got 'ssrapigateway.domain' from consul
+Got 'security.authToken' from consul
+================================ CONFIG LOADED =================================
+{"app":{"name":"sbrodds"},"styleCode":"n7pea2","apigateway":{"domain":"qa.ms.us-east-1.sbrfeeds.com","port":443,"proto":"https"},"ssrapigateway":{"domain":"qa.ms.us-east-1.sbrfeeds.com","port":80,"proto":"http"},"httpproxy":{"domain":"qa.http.us-east-1.sbrfeeds.com","port":80,"proto":"http"},"liveOdds":{"domain":"live-odds.qa.ws.us-east-1.sbrfeeds.com","port":443,"proto":"wss"},"local":{"domain":"localhost","port":3000,"proto":"http"},"cdn":{"url":"/"},"cors":{"origin":"*"},"geo":{"site":"sbrodds","domain":"com","cookieMaxAge":86400000},"consul":{"url":"qa.consul.us-east-1.sbrfeeds.com"},"casServerHost":"http://qa.sbrcas.us-east-1.sbrfeeds.com","publicPath":"/","affiliateHost":"http://qa.affiliate.sportsbookreview.sbrfeeds.com","googleTagManagerKey":"GTM-TJLFVD","siteId":4,"familyId":3,"services":{"metricsService":{"name":"metrics","type":"apigateway"},"sbrOddsService":{"name":"sbrodds","type":"apigateway"},"oddsv2Service":{"name":"odds-v2","type":"apigateway"},"picksAdmin":{"name":"picks-admin","type":"apigateway"},"liveOddsService":{"name":"live-odds","type":"ws"},"renderService":{"name":"render","type":"httpproxy"}},"resources":{"menu":{"url":"https://menu-service-qa-753931602578.s3.amazonaws.com"},"pages":{"url":"https://menu-service-qa-753931602578.s3.amazonaws.com/pages","pageName":"pageContent_{siteId}_{domainId}.json"},"sitemap":{"url":"https://s3.amazonaws.com/sitemap-xmls-753931602578/sbrodds"}},"fluentd":{"host":"localhost","port":24224,"timeout":3,"reconnectInterval":600000,"use-local-ipv4":true},"meta-data":{"local-ipv4":"172.22.16.77"},"sendAccessLogs":true,"appDefaultDid":2,"defaultDomainId":0,"defaultSportId":0,"statisticGroupId":3,"playsGroupId":2,"picksUrl":"https://qa.picks-redesign.sbrfeeds.com","sbrUrl":"http://qa.sbrodds.us-east-1.sbrfeeds.com","defaultPaid":3,"restrictedAreas":["NJ"],"security":{"authToken":{"validations":{"expirationDate":true}},"accessToken":{"validations":{"minCreationDate":1542990608,"creationDate":true,"expirationDate":true}}},"maxTimeForExecuteReconnect":90000,"sgidWhenFinished":4,"pgidWhenFinished":-1,"toggles":{"useHardRedirectToEventPage":false,"useWordpress":true,"showHelloBar":false,"disclaimerBanner":true,"showBreakButton":false,"horseracing":false},"dataLayerMaxLength":100}
+================================================================================
+==> ✅  Open http://localhost:8080 in a browser to view the app.
