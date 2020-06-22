@@ -98,9 +98,9 @@ acl is_sbrratings_wp path_reg -i -i ^/sportsbook-ratings$ ^/sportsbook-ratings/ 
 # PICKS-WP
 acl is_march_madness_wp path_reg -i ^/march-madness$ ^/march-madness/ ^/march-madness/$
 acl is_politics_wp path_reg -i ^/politics$ ^/politics/ ^/politics/$
-acl is_sitemap_wp path_reg -i /sitemap_index.xml /page-sitemap.xml
+acl is_sitemap_wp path_reg -i /sitemap_index.xml /page-sitemap.xml ^/(post-sitemap.*\.xml|betting-sites-sitemap.*\.xml)
 acl is_beta_sportsbookreview hdr_dom(host) -i beta.sportsbookreview.com
-acl is_picks_wp path_reg -i ^/picks$ ^/picks/ ^/picks/$ ^/wp-content/$ ^/wp-content/ ^/wp-includes/$ ^/wp-includes/ /wp-login.php ^/wp-admin/$ ^/wp-admin/ /admin.php ^/author/$ ^/author/ ^/wp-json/$ ^/wp-json/
+acl is_picks_wp path_reg -i ^/picks$ ^/picks/ ^/picks/$ ^/wp-content/$ ^/wp-content/ ^/wp-includes/$ ^/wp-includes/ /wp-login.php ^/wp-admin/$ ^/wp-admin/ /admin.php ^/author/$ ^/author/ ^/author$ ^/wp-json/$ ^/wp-json/
 acl ignore_picks_wp path_reg -i ^/picks/tools/ ^/picks/tools/$
 
 #New picks site
@@ -307,8 +307,6 @@ backend pickswp.cluster
         balance roundrobin
         cookie JSESSIONID prefix
         #option httpchk HEAD /picks/ HTTP/1.0\r\nHOST:\ beta.sportsbookreview.com
-        acl is_wp_author path_reg -i ^/author/ ^/author/$
-        http-request set-path /picks/%[path] if is_wp_author
         option allbackups
         server 172.22.3.240-nginx 172.22.3.240:94 check
 
